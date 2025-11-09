@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: step01_springJPA
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+# 서버 포트 및 파일 업로드 설정은 필요시 주석 해제
+server:
+   port: 9000
+
+# spring:
+#   servlet:
+#     multipart:
+#       max-file-size: 100MB
+#       max-request-size: 100MB
