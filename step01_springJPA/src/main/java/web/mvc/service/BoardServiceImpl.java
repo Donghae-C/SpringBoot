@@ -37,4 +37,15 @@ public class BoardServiceImpl implements BoardService{
 
         return boardRepository.findAll();
     }
+
+    @Override
+    public void update(Board board) {
+        Board initBoard = boardRepository.findById(board.getBno()).orElse(null);
+        initBoard.setTitle(board.getTitle());
+        initBoard.setContent(board.getContent());
+        initBoard.setWriter(board.getWriter());
+        boardRepository.save(initBoard);
+    }
+
+
 }

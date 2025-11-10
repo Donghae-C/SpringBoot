@@ -17,4 +17,6 @@ public interface BoardService {
      * 전체조회하기
      */
     List<Board> findAll();
+
+    void update(Board board);
 }

@@ -32,4 +32,11 @@ public class AjaxController {
     public ResponseEntity<?> getBoards(){
         return ResponseEntity.status(HttpStatus.OK).body(boardService.findAll());
     }
+
+    @PutMapping("/boards/{bno}")
+    public ResponseEntity<?> updateBoard(@PathVariable long bno, @RequestBody Board board){
+        board.setBno(bno);
+        boardService.update(board);
+        return ResponseEntity.status(HttpStatus.OK).body("ok");
+    }
 }
