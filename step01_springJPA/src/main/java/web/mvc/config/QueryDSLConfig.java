@@ -12,9 +12,10 @@ import org.springframework.context.annotation.Configuration;
 //id = method 이름.
 @Configuration
 @Slf4j
-@RequiredArgsConstructor
+
 public class QueryDSLConfig {
-    private final EntityManager em;
+    @PersistenceContext
+    private EntityManager em;
 
     @Bean
     public JPAQueryFactory getQueryFactory() {

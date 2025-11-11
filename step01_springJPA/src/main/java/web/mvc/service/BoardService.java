@@ -19,4 +19,6 @@ public interface BoardService {
     List<Board> findAll();
 
     void update(Board board);
+
+    void test();
 }

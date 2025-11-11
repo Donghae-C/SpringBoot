@@ -11,7 +11,7 @@ import web.mvc.entity.Board;
 
 import java.util.List;
 
-public interface BoardRepository extends JpaRepository<Board,Long>, QuerydslPredicateExecutor<Board> {
+public interface BoardRepository extends JpaRepository<Board,Long>, QuerydslPredicateExecutor<Board>{
 
     /**
      * 전달된 글번호보다 큰 레코드 검색

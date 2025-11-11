@@ -3,6 +3,7 @@ package web.mvc.service;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Service;
 import web.mvc.entity.Board;
 import web.mvc.repository.BoardRepository;
@@ -47,5 +48,8 @@ public class BoardServiceImpl implements BoardService{
         boardRepository.save(initBoard);
     }
 
+    @Override
+    public void test() {
 
+    }
 }
