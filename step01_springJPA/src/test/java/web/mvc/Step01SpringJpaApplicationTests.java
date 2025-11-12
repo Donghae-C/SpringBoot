@@ -73,8 +73,10 @@ class Step01SpringJpaApplicationTests {
     @Test
     @DisplayName("get요청 테스트")
     public void get() {
+        String kakaoUrl = "https://careers.kakao.com/jobs?skillSet=&page=1&company=KAKAO&part=TECHNOLOGY&employeeType=&keyword=";
+        String naverUrl = "https://recruit.navercorp.com/rcrt/list.do?subJobCdArr=1010004#n";
         RestTemplate restTemplate = new RestTemplate();
-        String url = "https://careers.kakao.com/jobs?skillSet=&page=1&company=KAKAO&part=TECHNOLOGY&employeeType=&keyword=";
+        String url = naverUrl;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(headers);

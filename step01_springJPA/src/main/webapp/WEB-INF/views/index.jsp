@@ -9,5 +9,6 @@
 <body>
 <h1> My Spring Boot 시작하기 !</h1>
 <h3>메시지 : ${message}</h3>
+
 </body>
 </html>
