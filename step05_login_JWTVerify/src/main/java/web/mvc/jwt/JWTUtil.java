@@ -21,43 +21,52 @@ import web.mvc.domain.Member;
 public class JWTUtil {
 
     private SecretKey secretKey;//Decode한 secret key를 담는 객체
-    
+
     //application.properties에 있는 미리 Base64로 Encode된 Secret key를 가져온다
-    public JWTUtil(@Value("${spring.jwt.secret}")String secret) {
-   
+    public JWTUtil(@Value("${spring.jwt.secret}") String secret) {
+
         secretKey = new SecretKeySpec(secret.getBytes(StandardCharsets.UTF_8), Jwts.SIG.HS256.key().build().getAlgorithm());
     }
-    
+
     //검증 Username
     public String getUsername(String token) {
-         log.info("getUsername(String token)  call");
+        log.info("getUsername(String token)  call");
         String re = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("username", String.class);
-        log.info("getUsername(String token)  re = {}" ,re);
+        log.info("getUsername(String token)  re = {}", re);
         return re;
     }
+
     //검증 Id
     public String getId(String token) {
         log.info("getId(String token)  call");
         String re = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("id", String.class);
-        log.info("getIds(String token)  re = {}" ,re);
+        log.info("getIds(String token)  re = {}", re);
         return re;
     }
-    
+
     //검증 Role
     public String getRole(String token) {
         log.info("getRole(String token)  call");
         String re = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("role", String.class);
-        log.info("getRole(String token)  re = {} " , re);
+        log.info("getRole(String token)  re = {} ", re);
         return re;
     }
-    
+
+    public Long getMemberNo(String token) {
+        log.info("getMemberNo(String token)  call");
+        Long re = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().get("memberNo", Long.class);
+        log.info("getMemberNo(String token)  re = {} ", re);
+        return re;
+    }
+
     //검증 Expired
     public Boolean isExpired(String token) {
         log.info("isExpired(String token)  call");
         boolean re = Jwts.parser().verifyWith(secretKey).build().parseSignedClaims(token).getPayload().getExpiration().before(new Date());
-        log.info("isExpired(String token)  re  = {}",re);
+        log.info("isExpired(String token)  re  = {}", re);
         return re;
     }
+
     //Bearer : JWT 혹은 Oauth에 대한 토큰을 사용
     //public String createJwt(String username, String role, Long expiredMs) {
     //claim은 payload에 해당하는 정보
@@ -66,6 +75,7 @@ public class JWTUtil {
         return Jwts.builder()
                 .claim("username", member.getName()) //이름
                 .claim("id", member.getId()) //아이디
+                .claim("memberNo", member.getMemberNo()) //멤버 넘버
                 .claim("role", role) //Role
                 .issuedAt(new Date(System.currentTimeMillis())) //현재로그인된 시간
                 .expiration(new Date(System.currentTimeMillis() + expiredMs)) //만료시간

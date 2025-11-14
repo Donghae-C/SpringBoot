@@ -87,7 +87,7 @@ public class BoardController {
 	//@PostMapping("/boards/board")
 	@PostMapping("/boards")
 	public ResponseEntity<?> save(@RequestBody BoardReq board , @AuthenticationPrincipal CustomMemberDetails customMemberDetails){
-		if( customMemberDetails.getMember().getMemberNo() != board.getMemberNo()){
+        if( customMemberDetails.getMember().getMemberNo() != board.getMemberNo()){
 			 throw new DMLException(ErrorCode.INSERT_FAILED);
 		}
 		log.info("board ={}", board);
