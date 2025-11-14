@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: step01
+
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3307/jpa?serverTimezone=Asia/Seoul
+    username: jang
+    password: jang1234
+    hikari:
+      connection-timeout: 10000          # 커넥션 요청 타임아웃 (ms)
+      maximum-pool-size: 10             # 최대 커넥션 수
+      minimum-idle: 2                   # 최소 유휴 커넥션 수
+      idle-timeout: 600000              # 유휴 커넥션 최대 유지 시간 (ms)
+      max-lifetime: 1800000             # 커넥션 최대 생존 시간 (ms)
+      auto-commit: true                 # 자동 커밋 여부
+
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+    hibernate:
+      ddl-auto: update
+    generate-ddl: false
+    show-sql: true
+    database: mysql
+
+logging:
+  level:
+    org:
+      hibernate: debug
+
+# 서버 포트 및 파일 업로드 설정은 필요시 주석 해제
+server:
+   port: 9000
+
+# spring:
+#   servlet:
+#     multipart:
+#       max-file-size: 100MB
+#       max-request-size: 100MB

@@ -1,0 +1,24 @@
+2025-06-05T13:00:33.604+09:00  INFO 15172 --- [step03_transaction] [nio-9999-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-05T13:00:33.604+09:00  INFO 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-06-05T13:00:33.605+09:00  INFO 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-06-05T13:00:33.706+09:00  INFO 15172 --- [step03_transaction] [nio-9999-exec-4] w.mvc.controller.TransferRestController  : reqDTO =RequestTransferDTO(inAccount=A02, outAccount=A01, amount=100)
+2025-06-05T13:00:33.714+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(749563089<open>)] for JPA transaction
+2025-06-05T13:00:33.714+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2025-06-05T13:00:33.723+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3ff4cf7a]
+2025-06-05T13:00:33.723+09:00 TRACE 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:00:33.751+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] org.hibernate.SQL                        : select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+Hibernate: select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+2025-06-05T13:00:33.791+09:00 TRACE 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:00:33.791+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2025-06-05T13:00:33.791+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(749563089<open>)]
+2025-06-05T13:00:33.798+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2025-06-05T13:00:33.798+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(749563089<open>)] for JPA transaction
+2025-06-05T13:00:33.798+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT,readOnly
+2025-06-05T13:00:33.800+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@3e743802]
+2025-06-05T13:00:33.800+09:00 TRACE 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:00:33.801+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] org.hibernate.SQL                        : select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+Hibernate: select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+2025-06-05T13:00:33.802+09:00 TRACE 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:00:33.802+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2025-06-05T13:00:33.803+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(749563089<open>)]
+2025-06-05T13:00:33.805+09:00 DEBUG 15172 --- [step03_transaction] [nio-9999-exec-4] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction

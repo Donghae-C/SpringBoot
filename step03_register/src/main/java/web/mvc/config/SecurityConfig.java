@@ -32,7 +32,7 @@ public class SecurityConfig {
        /////////////////////////////////
         //csrf disable
         http.csrf((auth) -> auth.disable()); //csrf공격을 방어하기 위한 토큰 주고 받는 부분을 비활성화!
-        //Form 로그인 방식 disable -> React, JWT 인증 방식으로 변겨예정
+        //Form 로그인 방식 disable -> React, JWT 인증 방식으로 변경예정
         //disable 를 설정하면 시큐리티의 UsernamePasswordAuthenticationFilter비활성됨.
         http.formLogin((auth) -> auth.disable());
         //http.formLogin(Customizer.withDefaults());
@@ -43,6 +43,8 @@ public class SecurityConfig {
         http.authorizeHttpRequests((auth) ->
                 auth
                         .requestMatchers("/index", "/members", "/members/**").permitAll()
+                        .requestMatchers("/v3/api-docs/**", "/v3/api-docs", "swagger-ui.html",
+                                "/swagger-ui/**", "/swagger-resources/**", "/webjars/**").permitAll()
                         // [1] GET 요청: 누구나 접근 가능
                         .requestMatchers(HttpMethod.GET, "/boards").permitAll()
                         .requestMatchers(HttpMethod.GET, "/boards/**").permitAll()

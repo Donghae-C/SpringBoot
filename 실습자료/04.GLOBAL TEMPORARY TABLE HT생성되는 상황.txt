@@ -1,0 +1,12 @@
+하이버네이트가 상속관계에서 최적화
+
+참고
+https://goddaehee.tistory.com/165
+
+https://in.relation.to/2017/02/01/non-temporary-table-bulk-id-strategies/
+
+
+#https://stackoverflow.com/questions/76312361/hibernate-6-1-x-spring-boot-avoid-global-temporary-table-creation
+hibernate.query.mutation_strategy=org.hibernate.query.sqm.mutation.internal.inline.InlineMutationStrategy
+hibernate.query.mutation_strategy.global_temporary.create_tables=false
+hibernate.query.mutation_strategy.global_temporary.drop_tables=false

@@ -1,0 +1,30 @@
+2025-06-05T13:06:46.053+09:00  INFO 31308 --- [step03_transaction] [nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-06-05T13:06:46.054+09:00  INFO 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2025-06-05T13:06:46.055+09:00  INFO 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2025-06-05T13:06:46.164+09:00  INFO 31308 --- [step03_transaction] [nio-9999-exec-1] w.mvc.controller.TransferRestController  : reqDTO =RequestTransferDTO(inAccount=A02, outAccount=A01, amount=1000)
+2025-06-05T13:06:46.168+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(350496188<open>)] for JPA transaction
+2025-06-05T13:06:46.169+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Creating new transaction with name [web.mvc.service.BankServiceImpl.transfer]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2025-06-05T13:06:46.174+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Exposing JPA transaction as JDBC [org.springframework.orm.jpa.vendor.HibernateJpaDialect$HibernateConnectionHandle@7c14d7d7]
+2025-06-05T13:06:46.175+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [web.mvc.service.BankServiceImpl.transfer]
+2025-06-05T13:06:46.179+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(350496188<open>)] for JPA transaction
+2025-06-05T13:06:46.179+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2025-06-05T13:06:46.179+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:06:46.204+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] org.hibernate.SQL                        : select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+Hibernate: select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+2025-06-05T13:06:46.240+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:06:46.241+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Found thread-bound EntityManager [SessionImpl(350496188<open>)] for JPA transaction
+2025-06-05T13:06:46.241+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Participating in existing transaction
+2025-06-05T13:06:46.241+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Getting transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:06:46.241+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] org.hibernate.SQL                        : select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+Hibernate: select b1_0.account,b1_0.balance from bank b1_0 where b1_0.account=?
+2025-06-05T13:06:46.244+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [org.springframework.data.jpa.repository.support.SimpleJpaRepository.findById]
+2025-06-05T13:06:46.245+09:00 TRACE 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.t.i.TransactionInterceptor           : Completing transaction for [web.mvc.service.BankServiceImpl.transfer] after exception: web.mvc.exception.BasicException
+2025-06-05T13:06:46.245+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Initiating transaction commit
+2025-06-05T13:06:46.246+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Committing JPA transaction on EntityManager [SessionImpl(350496188<open>)]
+2025-06-05T13:06:46.265+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] org.hibernate.SQL                        : update bank set balance=? where account=?
+Hibernate: update bank set balance=? where account=?
+2025-06-05T13:06:46.272+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] org.hibernate.SQL                        : update bank set balance=? where account=?
+Hibernate: update bank set balance=? where account=?
+2025-06-05T13:06:46.283+09:00 DEBUG 31308 --- [step03_transaction] [nio-9999-exec-1] o.s.orm.jpa.JpaTransactionManager        : Not closing pre-bound JPA EntityManager after transaction
+2025-06-05T13:06:46.285+09:00 ERROR 31308 --- [step03_transaction] [nio-9999-exec-1] w.m.exception.GlobalRestExceptionAdvice  : Error Message error 입금계좌 최대금액 초과 오류입니다. 
+2025-06-05T13:06:46.322+09:00  WARN 31308 --- [step03_transaction] [nio-9999-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [web.mvc.exception.BasicException]

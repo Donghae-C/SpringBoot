@@ -1,0 +1,56 @@
+참고
+https://stackoverflow.com/questions/47957132/querydsl-classes-are-not-generated-in-intellij
+
+pom.xml설정
+<properties>
+        <java.version>17</java.version>
+        <maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+        <querydsl.version>5.0.0</querydsl.version>
+        <jakarta-persistence-api.version>3.1.0</jakarta-persistence-api.version>
+    </properties>
+----------------------------------------------------------------------------------------------------
+<dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <classifier>jakarta</classifier>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <classifier>jakarta</classifier>
+            <version>${querydsl.version}</version>
+        </dependency>
+
+------------------------------------------------------------------------------------------------
+ 메이븐 clean 실행 후 intellj를 restart 한다.
+---------------------------------------------------------------------------------
+<!-- QueryDSL세텅 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+              
+                <configuration>
+                <source>${java.version}</source>
+                <target>${java.version}</target>
+                <encoding>UTF-8</encoding>
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>com.querydsl</groupId>
+                        <artifactId>querydsl-apt</artifactId>
+                        <version>${querydsl.version}</version>
+                        <classifier>jakarta</classifier>
+                    </path>
+                    <path>
+                        <groupId>jakarta.persistence</groupId>
+                        <artifactId>jakarta.persistence-api</artifactId>
+                        <version>3.1.0</version>
+                    </path>
+                </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- QueryDSL세팅끝 -->
+----------------------------------------------------------------------------------------
