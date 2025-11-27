@@ -1,0 +1,22 @@
+#네트워크생성하기
+docker network create mynet
+
+# 볼륨생성하기
+docker volume create mydata
+
+# mysql 도커이미지 (pull + create + start)
+docker run -d -p 3306:3306 -v mydata:/var/lib/mysql --name mysql_db -e MYSQL_ROOT_PASSWORD=1234 -e MYSQL_USER=jang -e MYSQL_PASSWORD=jang1234 -e MYSQL_DATABASE=jwt_db -e TZ=Asia/Seoul --network=mynet mysql
+
+
+#확인하기
+docker ps -a
+
+# mysql안으로 들어기
+docker exec -it mysql_db /bin/bash
+
+# mysql 접속하기
+ mysql -ujang -pjang1234
+
+
+# 데이터베이스 확인하기
+show databases;

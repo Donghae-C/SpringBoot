@@ -1,0 +1,4 @@
+-- 최초 컨테이너 실행 시 실행됨 (데이터가 없을 때만)
+CREATE USER IF NOT EXISTS 'jang'@'%' IDENTIFIED BY 'jang1234';
+GRANT ALL PRIVILEGES ON *.* TO 'jang'@'%' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
